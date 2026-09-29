@@ -1,0 +1,13 @@
+{
+  "name": "screensize",
+  "version": "2.1.0",
+  "private": true,
+  "description": "Minimal responsive website preview and device simulator with local history, custom viewports and device controls.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
