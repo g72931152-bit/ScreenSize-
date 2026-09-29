@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#202124" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="Preview websites across responsive viewport sizes with ScreenSize.">
+  <title>ScreenSize — Responsive Preview</title>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="ScreenSize home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>ScreenSize</span>
+      </a>
+      <button id="shareProject" class="btn" type="button"><svg class="i" aria-hidden="true"><use href="/sprite.svg#share"/></svg><span class="label">Share</span></button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>See your website at every viewport</h1>
+        <p>Load one page and compare real CSS viewports side by side.</p>
+        <form id="previewForm" class="url-bar" novalidate>
+          <svg class="i url-icon" aria-hidden="true"><use href="/sprite.svg#search"/></svg>
+          <label class="sr-only" for="urlInput">Website URL</label>
+          <input id="urlInput" name="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="example.com">
+          <button id="previewButton" type="submit">Preview</button>
+        </form>
+        <div id="urlMessage" class="url-message" role="status" aria-live="polite"></div>
+      </section>
+
+      <section id="recentPanel" class="recent" aria-label="Recent websites" hidden>
+        <div id="recentList" class="recent-list"></div>
+        <button id="clearHistory" class="btn" type="button">Clear</button>
+      </section>
+
+      <section class="toolbar" aria-label="Preview controls">
+        <div class="device-tabs" role="group" aria-label="Device group">
+          <button class="chip device-tab" data-group="all" aria-pressed="true" type="button">All</button>
+          <button class="chip device-tab" data-group="mobile" aria-pressed="false" type="button">Mobile</button>
+          <button class="chip device-tab" data-group="tablet" aria-pressed="false" type="button">Tablet</button>
+          <button class="chip device-tab" data-group="desktop" aria-pressed="false" type="button">Desktop</button>
+        </div>
+        <div class="toolbar-actions">
+          <span id="loadState" class="load-state">Ready</span>
+          <button id="customSize" class="btn" type="button">Custom size</button>
+          <button id="reloadAll" class="icon-button" type="button" title="Reload all previews" aria-label="Reload all previews"><svg class="i" aria-hidden="true"><use href="/sprite.svg#reload"/></svg></button>
+        </div>
+      </section>
+
+      <section id="previewGrid" class="preview-grid"></section>
+    </main>
+
+    <footer>Some websites block embedding. Use the simulator or open the original site.</footer>
+  </div>
+
+  <dialog id="deviceDialog" class="device-dialog" aria-labelledby="dialogTitle">
+    <form method="dialog" id="deviceForm" class="device-form">
+      <div class="dialog-head">
+        <h2 id="dialogTitle">Custom viewport</h2>
+        <button id="dialogClose" class="icon-button" type="button" aria-label="Close"><svg class="i" aria-hidden="true"><use href="/sprite.svg#close"/></svg></button>
+      </div>
+      <label>Label<input id="customName" maxlength="24" value="Custom" placeholder="My device"></label>
+      <div class="size-fields">
+        <label>Width (px)<input id="customWidth" type="number" inputmode="numeric" min="240" max="4000" step="1" value="1024" required></label>
+        <label>Height (px)<input id="customHeight" type="number" inputmode="numeric" min="240" max="3000" step="1" value="768" required></label>
+      </div>
+      <div class="dialog-actions">
+        <button id="dialogCancel" class="btn" type="button">Cancel</button>
+        <button class="btn filled" type="submit">Open simulator</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="snackbar" class="snackbar" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>

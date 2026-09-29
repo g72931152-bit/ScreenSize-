@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#202124" media="(prefers-color-scheme: dark)">
+  <title>ScreenSize — Simulator</title>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="simulator-page">
+  <div class="progress" aria-hidden="true"></div>
+  <div class="simulator-shell">
+    <header class="simulator-topbar">
+      <a id="backLink" class="icon-button" href="/" title="Back to previews" aria-label="Back to previews"><svg class="i" aria-hidden="true"><use href="/sprite.svg#back"/></svg></a>
+      <a id="brandLink" class="brand" href="/" aria-label="ScreenSize home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>ScreenSize</span>
+      </a>
+      <div class="simulator-url" id="simulatorUrl">Loading…</div>
+      <div class="simulator-actions">
+        <button id="shareSimulator" class="btn" type="button"><svg class="i" aria-hidden="true"><use href="/sprite.svg#share"/></svg><span class="label">Share</span></button>
+        <button id="openOriginal" class="btn" type="button"><svg class="i" aria-hidden="true"><use href="/sprite.svg#open"/></svg><span class="label">Open original</span></button>
+      </div>
+    </header>
+
+    <section class="simulator-toolbar">
+      <h1 id="deviceTitle">Desktop</h1>
+      <div class="sim-device-tabs" role="group" aria-label="Device size">
+        <button class="chip" data-device="mobile" aria-pressed="false" type="button">Mobile</button>
+        <button class="chip" data-device="mobile-wide" aria-pressed="false" type="button">Large Mobile</button>
+        <button class="chip" data-device="tablet" aria-pressed="false" type="button">Tablet</button>
+        <button class="chip" data-device="desktop" aria-pressed="false" type="button">Desktop</button>
+        <button class="chip" data-device="desktop-wide" aria-pressed="false" type="button">Wide Desktop</button>
+      </div>
+    </section>
+
+    <section class="sim-controls" aria-label="Simulator controls">
+      <div class="sim-control-group">
+        <button id="zoomOut" class="icon-button" type="button" title="Zoom out (−)" aria-label="Zoom out"><svg class="i" aria-hidden="true"><use href="/sprite.svg#remove"/></svg></button>
+        <output id="zoomValue" class="zoom-value">Fit</output>
+        <button id="zoomIn" class="icon-button" type="button" title="Zoom in (+)" aria-label="Zoom in"><svg class="i" aria-hidden="true"><use href="/sprite.svg#add"/></svg></button>
+        <button id="zoomFit" class="btn" type="button" title="Fit to screen (0)">Fit</button>
+      </div>
+      <div class="sim-control-group">
+        <button id="rotateDevice" class="btn" type="button" title="Rotate (R)"><svg class="i" aria-hidden="true"><use href="/sprite.svg#rotate"/></svg><span class="label">Rotate</span></button>
+        <button id="reloadDevice" class="btn" type="button"><svg class="i" aria-hidden="true"><use href="/sprite.svg#reload"/></svg><span class="label">Reload</span></button>
+      </div>
+    </section>
+
+    <main class="simulator-workspace" id="simulatorWorkspace">
+      <section class="device-wrap" id="deviceWrap">
+        <div class="device-caption" id="deviceCaption">1440 × 900</div>
+        <div class="device-surface" id="deviceSurface">
+          <div class="device-empty" id="deviceEmpty">
+            <div class="preview-logo" aria-hidden="true">
+              <div class="preview-logo-mark"><span></span><span></span><span></span></div>
+              <div class="preview-logo-caption">Loading</div>
+            </div>
+          </div>
+          <iframe id="simFrame" title="Website simulator" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <div class="sim-blocked" id="simBlocked">
+            <div>
+              <strong>This website can’t be shown here</strong>
+              <p>Its security policy blocks the page from being rendered inside ScreenSize.</p>
+              <div class="status-actions">
+                <button id="blockedOriginal" class="btn filled" type="button">Open original</button>
+                <button id="openDeviceWindow" class="btn outlined" type="button">Open in device window</button>
+                <button id="blockedBack" class="btn" type="button">Back to previews</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="simulator-footer">Viewport simulation only — browser chrome is not emulated.</footer>
+  </div>
+  <div id="snackbar" class="snackbar" role="status" aria-live="polite"></div>
+  <script src="/simulate.js" defer></script>
+</body>
+</html>
