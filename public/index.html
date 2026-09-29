@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080a0d">
+  <meta name="description" content="Preview websites across responsive viewport sizes with ScreenSize.">
+  <title>ScreenSize — Responsive Preview</title>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="ScreenSize home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>ScreenSize</span>
+      </a>
+      <div class="topbar-actions">
+        <button id="shareProject" class="text-action" type="button">Share</button>
+        <div class="topbar-status"><span class="status-dot"></span> Live preview</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow">RESPONSIVE CHECK</div>
+        <h1>See your website at every size.</h1>
+        <p>Test the same page against mobile, tablet and desktop viewports in one focused workspace.</p>
+
+        <form id="previewForm" class="url-bar" novalidate>
+          <div class="url-icon" aria-hidden="true">↗</div>
+          <label class="sr-only" for="urlInput">Website URL</label>
+          <input id="urlInput" name="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="https://example.com">
+          <button id="previewButton" type="submit">Preview <span>→</span></button>
+        </form>
+        <div id="urlMessage" class="url-message" role="status" aria-live="polite"></div>
+      </section>
+
+      <section class="recent-panel" aria-label="Recent websites">
+        <div class="recent-head">
+          <div>
+            <div class="eyebrow compact">RECENT</div>
+            <strong>Saved locally on this device</strong>
+          </div>
+          <button id="clearHistory" class="text-action subtle" type="button">Clear</button>
+        </div>
+        <div id="recentList" class="recent-list"></div>
+      </section>
+
+      <section class="toolbar" aria-label="Preview controls">
+        <div class="device-tabs" role="tablist" aria-label="Device group">
+          <button class="device-tab is-active" data-group="all" role="tab" aria-selected="true">All</button>
+          <button class="device-tab" data-group="mobile" role="tab" aria-selected="false">Mobile</button>
+          <button class="device-tab" data-group="tablet" role="tab" aria-selected="false">Tablet</button>
+          <button class="device-tab" data-group="desktop" role="tab" aria-selected="false">Desktop</button>
+        </div>
+        <div class="toolbar-actions">
+          <span id="loadState" class="load-state">Ready</span>
+          <button id="customSize" class="icon-button toolbar-text-button" type="button">Custom size</button>
+          <button id="reloadAll" class="icon-button" type="button" title="Reload all previews" aria-label="Reload all previews">↻</button>
+        </div>
+      </section>
+
+      <section id="previewGrid" class="preview-grid" aria-live="polite"></section>
+
+      <section class="notes">
+        <div class="note-card">
+          <div class="note-number">01</div>
+          <div><strong>Real viewport dimensions</strong><p>Every frame uses the exact CSS viewport width and height shown on its card.</p></div>
+        </div>
+        <div class="note-card">
+          <div class="note-number">02</div>
+          <div><strong>Embedding can be blocked</strong><p>X-Frame-Options or CSP can prevent third-party pages from rendering inside an iframe.</p></div>
+        </div>
+        <div class="note-card">
+          <div class="note-number">03</div>
+          <div><strong>Local history + sharing</strong><p>Recent URLs stay on this device, and the current preview can be shared as a link.</p></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>ScreenSize <span>·</span> Built for fast responsive checks</footer>
+  </div>
+
+  <dialog id="deviceDialog" class="device-dialog">
+    <form method="dialog" id="deviceForm" class="device-form">
+      <div class="dialog-head">
+        <div>
+          <div class="eyebrow compact">CUSTOM VIEWPORT</div>
+          <h2>Create a size</h2>
+        </div>
+        <button class="dialog-close" value="cancel" aria-label="Close">×</button>
+      </div>
+      <label>Label<input id="customName" maxlength="24" value="Custom" placeholder="My device"></label>
+      <div class="size-fields">
+        <label>Width<input id="customWidth" type="number" min="240" max="4000" step="1" value="1024"></label>
+        <label>Height<input id="customHeight" type="number" min="240" max="3000" step="1" value="768"></label>
+      </div>
+      <div class="dialog-actions">
+        <button class="sim-button ghost" value="cancel">Cancel</button>
+        <button id="customCreate" class="sim-button" value="default">Open simulator</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
