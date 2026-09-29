@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c0f14">
+  <title>ScreenSize — Simulator</title>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="simulator-page">
+  <div class="simulator-shell">
+    <header class="simulator-topbar">
+      <a class="brand" href="/" aria-label="ScreenSize home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>ScreenSize</span>
+      </a>
+      <div class="simulator-url" id="simulatorUrl">Loading…</div>
+      <div class="simulator-actions">
+        <button id="openOriginal" class="sim-button" type="button">Open original ↗</button>
+        <a class="sim-button ghost" href="/">Back</a>
+      </div>
+    </header>
+
+    <section class="simulator-toolbar">
+      <div>
+        <div class="eyebrow">DEVICE SIMULATOR</div>
+        <h1 id="deviceTitle">Desktop</h1>
+      </div>
+      <div class="sim-device-tabs" role="tablist" aria-label="Device size">
+        <button data-device="mobile" role="tab">Mobile</button>
+        <button data-device="mobile-wide" role="tab">Large Mobile</button>
+        <button data-device="tablet" role="tab">Tablet</button>
+        <button data-device="desktop" class="active" role="tab">Desktop</button>
+      </div>
+    </section>
+
+    <main class="simulator-workspace">
+      <section class="device-wrap" id="deviceWrap">
+        <div class="device-caption" id="deviceCaption">1440 × 900</div>
+        <div class="device-surface" id="deviceSurface">
+          <div class="device-empty" id="deviceEmpty">
+            <div class="sim-logo-mark"><span></span><span></span><span></span></div>
+            <div class="sim-logo-name">ScreenSize</div>
+            <div class="sim-logo-line">Preparing viewport</div>
+          </div>
+          <iframe id="simFrame" title="Website simulator" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+          <div class="sim-blocked" id="simBlocked">
+            <div class="sim-blocked-icon">×</div>
+            <strong>This website does not allow embedding</strong>
+            <p>Its security policy blocks the page from being rendered inside ScreenSize.</p>
+            <div class="status-actions">
+              <button id="blockedOriginal" class="status-simulate" type="button">Open original</button>
+              <button id="openDeviceWindow" class="status-simulate" type="button">Open in device window</button>
+              <button id="blockedBack" class="status-external" type="button">Choose another size</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="simulator-footer">
+      <span>ScreenSize simulator</span>
+      <span>·</span>
+      <span>Viewport simulation only — browser chrome is not emulated.</span>
+    </footer>
+  </div>
+  <script src="/simulate.js" defer></script>
+</body>
+</html>
